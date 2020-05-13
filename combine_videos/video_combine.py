@@ -9,20 +9,6 @@ import video_processing
 
 
 def process_clips(clips_in):
-    clips_out = []
-    for i, clip in enumerate(clips_in):
-        print("Processing clip {} of {}".format(i + 1, len(clips_in)))
-
-        # Drop frames with a low time-energy
-        # - This is meant to be a measure of how much movement is happening in a clip
-        # - We dont really want to see people standing still. It may be worthwhile to go back and review these clips,
-        #   but for the sake of viewing the clips quickly to identify videos of interest we only want to see movement
-        times_to_keep = video_processing.filter_time_energy_frames(clip)
-        image_sequence = ImageSequenceClip(
-            [clip.get_frame(t) for t in times_to_keep],
-            fps=clip.fps
-        )
-        clips_out.append(image_sequence)
     return clips_out
 
 
