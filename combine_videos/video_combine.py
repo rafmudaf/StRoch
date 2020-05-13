@@ -21,15 +21,10 @@ def process_clips(clips_in):
     return clips_out
 
 def process_chunk(i, filenames):
-    chunk = [VideoFileClip( os.path.join(video_directory, f) ) for f in filenames]
-
     print("Working on chunk {} of {}".format(i + 1, n_chunks))
+    chunk = [VideoFileClip( os.path.join(video_directory, f) ) for f in filenames]
     chunk = process_clips(chunk)
-
-    print("Building clip...")
     final_clip = concatenate_videoclips(chunk)
-
-    print("Exporting video file...")
     final_clip.write_videofile(video_directory + "_temp_{}".format(i + 1) + ".mp4")
     final_clip.write_videofile(os.path.join(video_directory, "temp{}".format(i + 1) + ".mp4"))
 

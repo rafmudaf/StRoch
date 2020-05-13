@@ -56,8 +56,6 @@ def drop_frames(clips_in):
     #   but for the sake of viewing the clips quickly to identify videos of interest we only want to see movement
     clips_out = []
     for i, clip in enumerate(clips_in):
-        print("Processing clip {} of {}".format(i + 1, len(clips_in)))
-
         times_to_keep = filter_time_energy_frames(clip)
         image_sequence = ImageSequenceClip(
             [clip.get_frame(t) for t in times_to_keep],
